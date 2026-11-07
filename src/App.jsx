@@ -3,20 +3,23 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
-import Journey from "./components/Journey";
+import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import useReveal from "./useReveal";
 
 function App() {
+  useReveal();
   return (
     <>
+      <a href="#main" className="skip-link">Skip to content</a>
       <Navbar />
-      <main>
+      <main id="main">
         <Hero />
         <About />
         <Skills />
         <Projects />
-        <Journey />
+        <Experience />
         <Contact />
       </main>
       <Footer />

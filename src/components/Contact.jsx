@@ -1,75 +1,44 @@
+import { profile } from "../data";
+import { GithubIcon, LinkedinIcon, MailIcon } from "./Icons";
+
 function Contact() {
+  const links = [
+    { href: `mailto:${profile.email}`, label: "Email", value: profile.email, icon: <MailIcon /> },
+    { href: profile.linkedin, label: "LinkedIn", value: profile.linkedin.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, ""), icon: <LinkedinIcon />, external: true },
+    { href: profile.github, label: "GitHub", value: profile.github.replace(/^https?:\/\//, ""), icon: <GithubIcon />, external: true },
+  ];
+
   return (
-    <section className="section contact" id="contact">
+    <section className="section section-alt" id="contact">
       <div className="container">
-        <div className="contact-box">
-          <p className="section-label">Contact</p>
-
-          <h2>Let's build something useful.</h2>
-
-          <p>
-            I'm always interested in connecting with people working in
-            technology, data science and AI.
+        <div className="contact-box reveal">
+          <p className="section-label"><span>05</span> Contact</p>
+          <h2 className="section-title">Let's work with data together.</h2>
+          <p className="section-description">
+            I'm looking for graduate and internship roles in data analytics and data science.
+            The fastest way to reach me is email.
           </p>
 
+          <a href={`mailto:${profile.email}`} className="btn btn-primary btn-lg">
+            <MailIcon /> Email me
+          </a>
+
           <div className="contact-links">
-
-            {/* Email */}
-            <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=ayaanlsaleeban08@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact-link"
-            >
-              <span>✉</span>
-              <div>
-                <strong>Email</strong>
-                <small>ayaanlsaleeban08@gmail.com</small>
-              </div>
-            </a>
-
-            {/* GitHub */}
-            <a
-              href="https://github.com/Ayanle-suleiman"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact-link"
-            >
-              <span>◉</span>
-              <div>
-                <strong>GitHub</strong>
-                <small>github.com/Ayanle-suleiman</small>
-              </div>
-            </a>
-
-            {/* LinkedIn */}
-            <a
-              href="https://www.linkedin.com/in/ayanle-suleiman/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact-link"
-            >
-              <span>in</span>
-              <div>
-                <strong>LinkedIn</strong>
-                <small>linkedin.com/in/ayanle-suleiman</small>
-              </div>
-            </a>
-
+            {links.map((l) => (
+              <a
+                key={l.label}
+                href={l.href}
+                className="contact-link"
+                {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              >
+                <span className="contact-icon">{l.icon}</span>
+                <span>
+                  <strong>{l.label}</strong>
+                  <small>{l.value}</small>
+                </span>
+              </a>
+            ))}
           </div>
-
-          {/* Email Button */}
-          <div>
-            <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=ayaanlsaleeban08@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hero-btn"
-            >
-              Email Me
-            </a>
-          </div>
-
         </div>
       </div>
     </section>

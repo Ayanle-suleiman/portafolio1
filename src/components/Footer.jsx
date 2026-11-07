@@ -1,10 +1,11 @@
+import { profile } from "../data";
+
 function Footer() {
   return (
     <footer className="footer">
-      <div className="container">
-        <p>
-          © 2026 Abdirahman Suleiman. Built with React.
-        </p>
+      <div className="container footer-inner">
+        <p>© {new Date().getFullYear()} {profile.name}</p>
+        <p>Built with React & Vite</p>
       </div>
     </footer>
   );
